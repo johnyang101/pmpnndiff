@@ -1,0 +1,3 @@
+defaults:
+  - PMPNN_VQ_mem_exp
+  - optuna/optuna_vq_ema

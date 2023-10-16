@@ -1,0 +1,11 @@
+name: PMPNN_JSONL_DM
+home_path: /Mounts/rbg-storage1/users/johnyang
+train_jsonl_path: ${dm.home_path}/data/pmpnn/single_chains/train_cath_chains.jsonl
+valid_jsonl_path: ${dm.home_path}/data/pmpnn/single_chains/val_cath_chains.jsonl
+test_jsonl_path: ${dm.home_path}/data/pmpnn/single_chains/test_cath_chains.jsonl
+max_protein_length: 10000
+batch_size: 20000 #Can be 25000 on rbgquanta2
+alphabet: ACDEFGHIKLMNPQRSTVWYX-
+truncate: null
+esm: False
+esm_cfg: null

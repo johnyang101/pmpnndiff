@@ -1,0 +1,7 @@
+defaults:
+ - PMPNN_Abs_AS_Latent_FT_exp
+ - PMPNN_mem_exp
+
+lm:
+  num_timesteps: 100
+  save_name: ${experiment.name}

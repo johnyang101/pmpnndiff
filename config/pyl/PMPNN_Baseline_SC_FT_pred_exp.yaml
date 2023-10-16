@@ -1,0 +1,14 @@
+defaults:
+  - PMPNN_Baseline_SC_FT_exp
+
+experiment:
+  name: PMPNN_Baseline_SC_FT_pred_exp
+  mode: predict
+  ckpt_path: null
+  
+
+lm:
+  save_name: ${experiment.name}
+  pred_cfg:
+    save_name: ${experiment.name}
+    save_dir: ${lm.pred_cfg.data_dir}/${lm.pred_cfg.save_name}/

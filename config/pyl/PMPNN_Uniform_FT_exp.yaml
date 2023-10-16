@@ -1,0 +1,9 @@
+defaults:
+ - PMPNN_Uniform_exp
+ - lm/model/PMPNN_FT_PATH
+
+experiment:
+  name: PMPNN_Uniform_FT
+
+lm:
+  ignore_keys: ['W_out.weight', 'W_out.bias']

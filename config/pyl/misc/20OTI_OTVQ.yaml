@@ -1,0 +1,11 @@
+defaults:
+  - OTVQ
+  - FT_PMPNN
+
+experiment:
+  name: 20OTI_OTVQ
+
+lm:
+  model:
+    vq_cfg:
+      ot_iter: 20

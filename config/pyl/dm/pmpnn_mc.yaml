@@ -1,0 +1,18 @@
+name: PMPNN_MC_DM
+data_path: /Mounts/rbg-storage1/users/johnyang/data/pmpnn/pdb_2021aug02
+params: 
+  LIST: ${dm.data_path}/list.csv 
+  VAL: ${dm.data_path}/valid_clusters.txt
+  TEST: ${dm.data_path}/test_clusters.txt
+  DIR: ${dm.data_path}
+  DATCUT: 2030-Jan-01,
+  RESCUT: 3.5 #resolution cutoff for PDBs
+  HOMO: 0.70 #min seq.id. to detect homo chains
+max_protein_length: 10000
+batch_size: 20000
+alphabet: ACDEFGHIKLMNPQRSTVWYX-
+truncate: null
+load_mc_data_path: /Mounts/rbg-storage1/users/johnyang/data/pmpnn/mc_datasets
+train_path: ${dm.load_mc_data_path}/train.pt
+val_path: ${dm.load_mc_data_path}/val.pt
+test_path: ${dm.load_mc_data_path}/test.pt

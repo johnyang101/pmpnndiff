@@ -1,0 +1,4 @@
+vqvae_name: PMPNN_OTVQ_CPD_LM
+lm_path: /Mounts/rbg-storage1/users/johnyang/s2sDM/notebooks/artifacts/model-32k9n6g7:v12/model.ckpt
+codebook_size: 80
+hparams_file: /Mounts/rbg-storage1/users/johnyang/branch2/s2sDM/outputs/2023-01-26/03-06-51/.hydra/config.yaml

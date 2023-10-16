@@ -1,0 +1,7 @@
+defaults:
+ - PMPNN_Uniform_exp
+ - lm/model/PMPNN_FT_PATH
+ - PMPNN_mem_exp
+
+lm:
+  num_timesteps: 100

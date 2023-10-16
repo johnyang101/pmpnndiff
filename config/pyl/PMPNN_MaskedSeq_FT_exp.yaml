@@ -1,0 +1,9 @@
+defaults:
+  - PMPNN_MaskedSeq_exp
+  - lm/model/PMPNN_FT_PATH
+
+experiment:
+  name: PMPNN_MaskedSeq_FT_exp
+
+lm:
+  save_name: ${experiment.name}

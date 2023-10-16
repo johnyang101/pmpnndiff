@@ -1,0 +1,6 @@
+defaults:
+ - PMPNN_Abs_QS_Latent_FT_exp
+ - PMPNN_mem_exp
+
+lm:
+  num_timesteps: 100

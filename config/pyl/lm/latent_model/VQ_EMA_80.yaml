@@ -1,0 +1,4 @@
+vqvae_name: PMPNN_VQ_CPD_LM
+lm_path: /Mounts/rbg-storage1/users/johnyang/s2sDM/pkl_jar/ckpt/FT_PMPNN_VQ_EMA_hp_search_2/epoch=72-step=12045.ckpt
+codebook_size: 80
+hparams_file: /Mounts/rbg-storage1/users/johnyang/s2sDM/multirun/2023-01-04/11-55-12/2/.hydra/edited_cfg_for_latent.yaml

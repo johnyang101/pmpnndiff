@@ -1,0 +1,30 @@
+defaults:
+  - base_exp
+  - override lm: Hooge_Uniform_D
+
+experiment:
+  name: PMPNN_Uniform
+
+lm:
+  lm_name: Hoogeboom_Uniform_Diff_LM
+  model_type: PMPNN
+  num_classes: 20
+  save_name: ${experiment.name}
+  model:
+    name: PMPNN_Baseline_Diff
+    absorbing: False
+    num_letters: ${lm.num_classes}
+    vocab: ${lm.num_classes}
+    num_classes: ${lm.num_classes}
+    embedding_cfg:
+      max_len: ${dm.max_protein_length}
+      T: ${lm.num_timesteps}
+      input_size: ${lm.num_classes} # relevant for codebook size.
+      pos_embed_size: 64
+      output_embed_size: ${lm.model.hidden_dim}
+
+dm:
+  alphabet: ACDEFGHIKLMNPQRSTVWY
+
+callbacks:
+  es_cb_enabled: False

@@ -1,0 +1,16 @@
+defaults:
+  - PMPNN_UNL_S_Latent_exp
+
+experiment:
+  name: PMPNN_UNL_S_Latent_pred_exp
+  mode: predict
+  ckpt_path: /Mounts/rbg-storage1/users/johnyang/s2sDM/pkl_jar/ckpt/PMPNN_UNL_S_Latent_exp/epoch=309-step=25730.ckpt
+  
+lm:
+  save_name: ${experiment.name}
+  pred_cfg:
+    save_name: ${experiment.name}
+    save_dir: ${lm.pred_cfg.data_dir}/${lm.pred_cfg.save_name}/
+
+dm:
+  alphabet: ACDEFGHIKLMNPQRSTVWYX-

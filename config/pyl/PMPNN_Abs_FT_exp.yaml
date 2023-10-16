@@ -1,0 +1,13 @@
+defaults:
+ - PMPNN_Abs_exp
+ - lm/model/PMPNN_FT_PATH
+
+experiment:
+  name: PMPNN_Abs_FT
+
+lm:
+  save_name: ${experiment.name}
+  ignore_keys: ['W_out.weight', 'W_out.bias']
+
+callbacks:
+  es_cb_enabled: False

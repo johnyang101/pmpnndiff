@@ -1,0 +1,10 @@
+dim: 128
+codebook_dim: 16
+codebook_size: 20
+decay: 0.00001
+kmeans_init: False
+sample_codebook_temp: 0.5
+eps: 0.5
+ot_iter: 10
+temp: 1.0
+eta: 0.001

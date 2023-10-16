@@ -1,0 +1,6 @@
+name: GVP_CATH_DM
+cath_splits_path: /Mounts/rbg-storage1/users/johnyang/data/gvp/cath_splits_list
+train_path: ${dm.cath_splits_path}/train.pt
+val_path: ${dm.cath_splits_path}/val.pt
+test_path: ${dm.cath_splits_path}/test.pt
+batch_tokens: 25000 #TODO: Swap to batch_size

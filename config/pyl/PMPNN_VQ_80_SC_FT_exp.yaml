@@ -1,0 +1,10 @@
+defaults:
+  - PMPNN_Baseline_SC_FT_exp
+  - lm/model/vq_cfg: vq_ema_80
+
+experiment:
+  name: PMPNN_VQ_SC_FT
+
+lm:
+  lm_name: PMPNN_VQ_CPD_LM
+  save_name: ${experiment.name}

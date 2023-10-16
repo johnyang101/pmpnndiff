@@ -1,0 +1,6 @@
+defaults:
+  - es_cb: early_stopping
+  - ckpt_cb: model_checkpoint
+
+es_cb_enabled: False
+ckpt_cb_enabled: True

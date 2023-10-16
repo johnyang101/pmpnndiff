@@ -1,0 +1,4 @@
+dirpath: ./pkl_jar/ckpt/${experiment.name}
+filename: null #'{epoch}-{val_ppl}-{step}'
+every_n_epochs: ${trainer.check_val_every_n_epoch}
+save_on_train_epoch_end: True

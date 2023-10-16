@@ -1,0 +1,18 @@
+
+accelerator: 'gpu'
+auto_scale_batch_size: False
+auto_lr_find: False
+check_val_every_n_epoch: 5
+log_every_n_steps: 100
+num_sanity_val_steps: 1
+enable_progress_bar: True
+enable_checkpointing: True
+fast_dev_run: False
+profiler: simple
+max_epochs: 10000
+strategy: null
+enable_model_summary: True
+overfit_batches: 0.0
+limit_train_batches: 1.0
+limit_val_batches: 1.0
+limit_predict_batches: 1.0

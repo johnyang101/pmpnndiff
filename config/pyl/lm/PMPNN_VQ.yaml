@@ -1,0 +1,5 @@
+defaults:
+  - model: PMPNN_MODEL
+    - vq_cfg: vq_ema
+
+lm_name: PMPNN_VQ_CPD_LM

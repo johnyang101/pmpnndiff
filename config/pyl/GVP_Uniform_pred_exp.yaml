@@ -1,0 +1,13 @@
+defaults:
+  - GVP_Uniform_exp
+
+experiment:
+  name: GVP_Uniform_pred_exp
+  mode: predict
+  ckpt_path: /Mounts/rbg-storage1/users/johnyang/s2sDM/pkl_jar/ckpt/GVP_Uniform_FT_exp/epoch=409-step=77490.ckpt
+
+lm:
+  save_name: ${experiment.name}
+  pred_cfg:
+    save_name: ${experiment.name}
+    save_dir: ${lm.pred_cfg.data_dir}/${lm.pred_cfg.save_name}/

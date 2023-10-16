@@ -1,0 +1,11 @@
+defaults:
+  - OTVQ
+  - FT_PMPNN
+
+experiment:
+  name: 40_OTVQ
+
+lm:
+  model:
+    vq_cfg:
+      codebook_size: 40

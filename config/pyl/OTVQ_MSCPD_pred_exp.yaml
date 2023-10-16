@@ -1,0 +1,14 @@
+defaults:
+  - OTVQ_MSCPD_exp
+
+experiment:
+  name: OTVQ_MSCPD_pred_exp
+  mode: predict
+  ckpt_path: /Mounts/rbg-storage1/users/johnyang/s2sDM/notebooks/artifacts/model-25h9rget:v77/model.ckpt
+  
+
+lm:
+  save_name: ${experiment.name}
+  pred_cfg:
+    save_name: ${experiment.name}
+    save_dir: ${lm.pred_cfg.data_dir}/${lm.pred_cfg.save_name}/

@@ -1,0 +1,9 @@
+defaults:
+ - PMPNN_Uniform_exp
+ - lm/model/PMPNN_SC_FT_PATH
+
+experiment:
+  name: PMPNN_Uniform_SC_FT
+
+lm:
+  save_name: ${experiment.name}

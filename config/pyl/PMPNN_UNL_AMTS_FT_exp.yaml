@@ -1,0 +1,11 @@
+defaults:
+  - PMPNN_UNL_exp
+  - lm/model/PMPNN_FT_PATH
+
+experiment:
+  name: PMPNN_UNL_AMTS_FT_exp
+
+lm:
+  save_name: ${experiment.name}
+  model:
+    ablate_struct: True

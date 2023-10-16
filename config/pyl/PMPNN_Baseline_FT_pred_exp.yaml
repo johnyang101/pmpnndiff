@@ -1,0 +1,11 @@
+defaults:
+  - PMPNN_Baseline_FT_exp
+
+experiment:
+  name: PMPNN_Baseline_FT_pred
+  mode: predict
+  ckpt_path: null
+  
+
+lm:
+  save_name: ${experiment.name}

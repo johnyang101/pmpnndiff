@@ -1,0 +1,23 @@
+defaults:
+ - PMPNN_Uniform_FT_exp
+ - lm/latent_model: OT_10
+ - override lm/token: VQ_Latent
+
+experiment:
+  name: PMPNN_Uniform_Latent_OT_10_FT
+
+lm:
+  num_classes: 10
+  lm_name: Latent_Uniform_Diff_LM
+  model:
+    name: PMPNN_Ablate_Struct_Latent_Diff
+    absorbing: False
+    num_letters: ${lm.num_classes}
+    vocab: ${lm.num_classes}
+    num_classes: ${lm.num_classes}
+    embedding_cfg:
+      max_len: ${dm.max_protein_length}
+      T: ${lm.num_timesteps}
+      input_size: ${lm.num_classes} # relevant for codebook size.
+      pos_embed_size: 64
+      output_embed_size: ${lm.model.hidden_dim}

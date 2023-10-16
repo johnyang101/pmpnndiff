@@ -1,0 +1,4 @@
+defaults:
+  - GVP_MODEL
+
+vector_gate: True

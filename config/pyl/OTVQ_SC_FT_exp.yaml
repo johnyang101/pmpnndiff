@@ -1,0 +1,9 @@
+defaults:
+  - OTVQ_80_exp
+  - lm/model/PMPNN_SC_FT_PATH
+
+experiment:
+  name: OTVQ_80_SC_FT_exp
+
+lm:
+  save_name: ${experiment.name}

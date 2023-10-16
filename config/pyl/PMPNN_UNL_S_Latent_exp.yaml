@@ -1,0 +1,33 @@
+defaults:
+  - PMPNN_UNL_exp
+  - lm/latent_model: OT_80
+  - override lm/token: VQ_Latent
+
+experiment:
+  name: PMPNN_UNL_S_Latent_exp
+
+lm:
+  lm_name: Latent_UNLAbs_Diff_LM
+  model_type: PMPNN
+  num_classes: 81
+  mask_id: 80
+  save_name: ${experiment.name}
+  freeze_ae: True
+  model:
+    name: PMPNN_Struct_Latent_Diff
+    num_letters: ${lm.num_classes}
+    vocab: ${lm.num_classes}
+    absorbing: True
+    num_classes: ${lm.num_classes}
+    embedding_cfg:
+      max_len: ${dm.max_protein_length}
+      T: ${lm.num_timesteps}
+      input_size: ${lm.num_classes} # relevant for codebook size.
+      pos_embed_size: 16
+      output_embed_size: ${lm.model.hidden_dim}
+
+dm:
+  alphabet: ACDEFGHIKLMNPQRSTVWY
+
+callbacks:
+  es_cb_enabled: False

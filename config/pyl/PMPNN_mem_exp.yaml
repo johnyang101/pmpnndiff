@@ -1,0 +1,11 @@
+lm:
+  model:
+    augment_eps: 0
+    dropout: 0
+    disable_random_decoding_order: True
+
+dm:
+  truncate: 1
+
+callbacks:
+  es_cb_enabled: False

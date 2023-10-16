@@ -1,0 +1,6 @@
+defaults:
+ - PMPNN_Abs_Trmr_Latent_exp
+
+lm:
+  freeze_ae: False
+  tds_dir: /Mounts/rbg-storage1/users/johnyang/data/pmpnn/test_designed_seqs/

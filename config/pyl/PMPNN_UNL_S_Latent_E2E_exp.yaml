@@ -1,0 +1,8 @@
+defaults:
+  - PMPNN_UNL_S_Latent_exp
+
+experiment:
+  name: PMPNN_UNL_S_Latent_E2E_exp
+
+lm:
+  freeze_ae: False

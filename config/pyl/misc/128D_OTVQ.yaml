@@ -1,0 +1,11 @@
+defaults:
+  - OTVQ
+  - FT_PMPNN
+
+experiment:
+  name: 128D_OTVQ
+
+lm:
+  model:
+    vq_cfg:
+      codebook_dim: 128

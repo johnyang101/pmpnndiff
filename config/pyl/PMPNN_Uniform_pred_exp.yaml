@@ -1,0 +1,10 @@
+defaults:
+ - PMPNN_Uniform_exp
+
+experiment:
+  name: PMPNN_Uniform_pred
+  mode: predict
+  ckpt_path: /Mounts/rbg-storage1/users/johnyang/s2sDM/pkl_jar/ckpt/PMPNN_Uniform/epoch=879-step=81840.ckpt
+
+lm:
+  save_name: ${experiment.name}

@@ -1,0 +1,10 @@
+defaults:
+  - base_exp
+  - lm/model/: PMPNN_FT_PATH
+
+
+experiment:
+  name: PMPNN_Baseline_mem
+
+callbacks:
+  es_cb_enabled: False

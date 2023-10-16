@@ -1,0 +1,14 @@
+defaults:
+  - GVP_VG_exp
+
+experiment:
+  name: GVP_VG_pred_exp
+  mode: predict
+  ckpt_path: /Mounts/rbg-storage1/users/johnyang/s2sDM/pkl_jar/ckpt/GVP_VG_exp/epoch=3709-step=701190.ckpt
+  
+
+lm:
+  save_name: ${experiment.name}
+  pred_cfg:
+    save_name: ${experiment.name}
+    save_dir: ${lm.pred_cfg.data_dir}/${lm.pred_cfg.save_name}/

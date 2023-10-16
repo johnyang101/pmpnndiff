@@ -1,0 +1,12 @@
+defaults: 
+ - base_gvp_exp
+ - lm/model/vq_cfg: vq_ema
+
+experiment:
+  name: GVP_VQ_exp
+
+lm:
+  lm_name: GVP_VQ_CPD_LM
+
+
+  

@@ -1,0 +1,6 @@
+defaults:
+ - PMPNN_Abs_Trmr_Latent_exp
+ - PMPNN_mem_exp
+
+lm:
+  num_timesteps: 100

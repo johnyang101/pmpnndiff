@@ -1,0 +1,12 @@
+defaults:
+  - PMPNN_Baseline_SC_FT_exp
+
+experiment:
+  name: PMPNN_Baseline_SC_FT_analysis
+  mode: deco_analysis
+  rand_deco_iters: 30
+  protein_name: 1sdi.A
+  
+
+lm:
+  save_name: ${experiment.name}

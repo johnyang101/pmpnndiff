@@ -1,0 +1,3 @@
+ft: True
+ft_path: /Mounts/rbg-storage1/users/johnyang/s2sDM/outputs/pmpnn/model_weights/epoch200_step78400.pt
+ignore_keys: ['W_out.weight', 'W_out.bias']

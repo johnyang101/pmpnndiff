@@ -1,0 +1,9 @@
+defaults:
+  - base_exp
+  - override dm: pmpnn_mc
+
+experiment:
+  name: PMPNN_MC_exp
+
+lm:
+  save_name: ${experiment.name}

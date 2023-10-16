@@ -1,0 +1,9 @@
+node_in_dim: [6, 3]
+node_h_dim: [100, 16] 
+edge_in_dim: [32, 1]
+edge_h_dim: [32, 1]
+num_layers: 3
+drop_rate: 0.1
+ft: False
+vector_gate: False
+node_hidden_dim: 100

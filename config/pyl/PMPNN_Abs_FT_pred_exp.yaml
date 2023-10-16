@@ -1,0 +1,11 @@
+defaults:
+ - PMPNN_Abs_FT_exp
+ - lm/model/PMPNN_FT_PATH
+
+experiment:
+  name: PMPNN_Abs_FT_pred
+  mode: predict
+  ckpt_path: /Mounts/rbg-storage1/users/johnyang/s2sDM/pkl_jar/ckpt/PMPNN_Abs_FT/epoch=714-step=45045.ckpt
+
+lm:
+  ignore_keys: ['W_out.weight', 'W_out.bias']

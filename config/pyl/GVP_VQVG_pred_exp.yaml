@@ -1,0 +1,17 @@
+defaults:
+  - GVP_VQVG_exp
+
+experiment:
+  name: GVP_VQVG_pred_exp
+  mode: predict
+  ckpt_path: /Mounts/rbg-storage1/users/johnyang/s2sDM/pkl_jar/ckpt/GVP_VQVG_exp/epoch=3574-step=675675.ckpt
+
+lm:
+  save_name: ${experiment.name}
+  model:
+    vq_cfg:
+      codebook_size: 80
+      codebook_dim: 16
+  pred_cfg:
+    save_name: ${experiment.name}
+    save_dir: ${lm.pred_cfg.data_dir}/${lm.pred_cfg.save_name}/

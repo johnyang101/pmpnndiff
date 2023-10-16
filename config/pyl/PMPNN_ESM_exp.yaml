@@ -1,0 +1,15 @@
+defaults:
+  - PMPNN_MaskedSeq_exp
+  - dm/esm_cfg: esm_cfg
+
+experiment:
+  name: PMPNN_ESM_exp
+
+lm:
+  save_name: ${experiment.name}
+  lm_name: PMPNN_MaskedESM_CPD_LM
+  model:
+    esm_hidden_dim: 1280
+  
+dm:
+  esm: True

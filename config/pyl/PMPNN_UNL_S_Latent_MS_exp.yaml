@@ -1,0 +1,6 @@
+defaults:
+ - PMPNN_UNL_S_Latent_exp
+ - override lm/latent_model: OT_80_MS
+
+experiment:
+  name: PMPNN_UNL_S_Latent_MS_exp

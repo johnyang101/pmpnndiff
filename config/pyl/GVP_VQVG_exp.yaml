@@ -1,0 +1,8 @@
+defaults: 
+ - GVP_VQ_exp
+ - override lm/model: GVP_VG
+
+experiment:
+  name: GVP_VQVG_exp
+
+  

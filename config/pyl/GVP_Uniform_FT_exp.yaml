@@ -1,0 +1,6 @@
+defaults:
+  - GVP_Uniform_exp
+  - lm/model/GVP_FT_PATH
+
+experiment:
+  name: GVP_Uniform_FT_exp

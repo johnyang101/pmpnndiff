@@ -1,0 +1,27 @@
+defaults:
+  - base_exp
+  - override lm: MSFT_Absorbing_D
+
+experiment:
+  name: PMPNN_Abs
+
+lm:
+  model_type: PMPNN
+  num_classes: 21
+  save_name: ${experiment.name}
+  model:
+    name: PMPNN_Baseline_Diff
+    absorbing: True
+    num_classes: ${lm.num_classes}
+    embedding_cfg:
+      max_len: ${dm.max_protein_length}
+      T: ${lm.num_timesteps}
+      input_size: ${lm.num_classes} # relevant for codebook size.
+      pos_embed_size: 64
+      output_embed_size: ${lm.model.hidden_dim}
+  ignore_keys: ['W_out.weight', 'W_out.bias']
+  tds_dir: /Mounts/rbg-storage1/users/johnyang/data/pmpnn/test_designed_seqs/
+  sampling_temp: 0.1
+
+dm:
+  alphabet: ACDEFGHIKLMNPQRSTVWY

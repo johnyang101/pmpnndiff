@@ -1,0 +1,3 @@
+defaults:
+ - PMPNN_VQ_exp
+ - PMPNN_mem_exp

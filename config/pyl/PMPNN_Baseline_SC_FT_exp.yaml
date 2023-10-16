@@ -1,0 +1,9 @@
+defaults:
+  - base_exp
+  - lm/model/PMPNN_SC_FT_PATH
+
+experiment:
+  name: PMPNN_Baseline_SC_FT
+
+lm:
+  save_name: ${experiment.name}

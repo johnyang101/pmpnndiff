@@ -1,0 +1,14 @@
+defaults:
+  - PMPNNVQ
+  - FT_PMPNN
+
+experiment:
+  name: FT_PMPNNVQ
+
+dm:
+  batch_size: 10000
+
+hydra:
+  sweeper:
+    params:
+      dm.batch_size: 30000

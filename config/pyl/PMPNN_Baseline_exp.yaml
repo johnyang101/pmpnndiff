@@ -1,0 +1,8 @@
+defaults:
+  - base_exp
+
+experiment:
+  name: PMPNN_Baseline
+
+lm:
+  save_name: ${experiment.name}

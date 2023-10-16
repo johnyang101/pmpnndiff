@@ -1,0 +1,11 @@
+defaults:
+  - base_exp
+
+experiment:
+  name: PMPNN_MaskedSeq_exp
+
+lm:
+  lm_name: PMPNN_MaskedSeq_CPD_LM
+  model:
+    mask_percent: 0.8
+  save_name: ${experiment.name}

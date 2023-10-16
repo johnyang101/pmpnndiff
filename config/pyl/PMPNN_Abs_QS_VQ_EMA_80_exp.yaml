@@ -1,0 +1,10 @@
+defaults:
+ - PMPNN_Abs_S_VQ_EMA_80_exp
+
+experiment:
+  name: PMPNN_Abs_QS_VQ_EMA_80_FT
+
+lm:
+  save_name: ${experiment.name}
+  model:
+    name: PMPNN_Quantized_Struct_Latent_Diff

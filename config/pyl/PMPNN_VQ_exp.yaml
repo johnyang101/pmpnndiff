@@ -1,0 +1,11 @@
+defaults:
+  - base_exp
+  - lm/model/vq_cfg: vq_ema
+
+
+experiment:
+  name: PMPNN_VQ
+
+lm:
+  lm_name: PMPNN_VQ_CPD_LM
+  save_name: ${experiment.name}

@@ -1,0 +1,25 @@
+defaults:
+ - PMPNN_Uniform_exp
+ - lm/latent_model: OT_10
+ - override lm/token: VQ_Latent
+
+experiment:
+  name: PMPNN_Uniform_Trmr_Latent_OT_10
+
+lm:
+  num_classes: 10
+  lm_name: Latent_Uniform_Diff_LM
+  save_name: ${experiment.name}
+  model:
+    name: PMPNN_Trmr_Latent_Diff
+    nheads: 8
+    num_layers: 3
+    dropout: 0.1
+    absorbing: False
+    num_classes: ${lm.num_classes}
+    embedding_cfg:
+      max_len: ${dm.max_protein_length}
+      T: ${lm.num_timesteps}
+      input_size: ${lm.num_classes} # relevant for codebook size.
+      pos_embed_size: 64
+      output_embed_size: ${lm.model.hidden_dim}

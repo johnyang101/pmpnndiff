@@ -1,0 +1,10 @@
+defaults:
+  - PMPNN_UNL_exp
+  - lm/model/PMPNN_FT_PATH
+  - override dm: pmpnn_mc
+
+experiment:
+  name: PMPNN_UNL_FT_MC_exp
+
+lm:
+  save_name: ${experiment.name}

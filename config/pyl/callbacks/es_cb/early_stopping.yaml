@@ -1,0 +1,7 @@
+monitor: train/loss
+patience: 10 #TODO: Change
+mode: min
+stopping_threshold: 0.01
+strict: True
+verbose: True
+check_on_train_epoch_end: True

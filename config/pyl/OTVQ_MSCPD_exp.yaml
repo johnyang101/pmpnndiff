@@ -1,0 +1,15 @@
+defaults:
+  - PMPNN_MaskedSeq_exp
+  - lm/model/vq_cfg: ot
+
+experiment:
+  name: OTVQ_MSCPD
+
+lm:
+  lm_name: PMPNN_OTVQ_MSCPD_LM
+  model:
+    hidden_dim: 128
+    vq_cfg:
+      dim: ${lm.model.hidden_dim}
+      codebook_size: 80
+      codebook_dim: 8

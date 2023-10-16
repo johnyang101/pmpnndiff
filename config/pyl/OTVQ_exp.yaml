@@ -1,0 +1,13 @@
+defaults:
+  - base_exp
+  - lm/model/vq_cfg: ot
+
+experiment:
+  name: OTVQ
+
+lm:
+  lm_name: PMPNN_OTVQ_CPD_LM
+  model:
+    hidden_dim: 128
+    vq_cfg:
+      dim: ${lm.model.hidden_dim}

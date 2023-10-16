@@ -1,0 +1,6 @@
+lm_name: Hoogeboom_Uniform_Diff_LM
+loss_type: vb_stochastic
+parametrization: x0
+num_classes: 20
+shape: null #TODO: desired sampling length
+num_timesteps: 1000

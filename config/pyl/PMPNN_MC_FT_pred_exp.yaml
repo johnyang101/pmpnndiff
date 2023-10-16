@@ -1,0 +1,13 @@
+defaults:
+  - PMPNN_MC_exp
+  - lm/model/PMPNN_FT_PATH
+
+experiment:
+  name: PMPNN_MC_FT_pred_exp
+  mode: predict
+  ckpt_path: null
+  
+dm.batch_size: 500
+
+lm:
+  save_name: ${experiment.name}

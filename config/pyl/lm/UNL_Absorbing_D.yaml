@@ -1,0 +1,8 @@
+shape: null
+n_samples: 64
+num_timesteps: 250
+# mask_id: 20
+loss_type: elbo
+mask_schedule: random
+aux_weight: 0.01
+temp: 1.0

@@ -1,0 +1,14 @@
+defaults:
+  - OTVQ_MSCPD_FT_exp
+  - lm/model/PMPNN_FT_PATH
+  - override dm: pmpnn_mc
+
+experiment:
+  name: OTVQ_MSCPD_MC_FT_exp
+
+lm:
+  save_name: ${experiment.name}
+  model:
+    vq_cfg:
+      codebook_size: 80
+      codebook_dim: 8

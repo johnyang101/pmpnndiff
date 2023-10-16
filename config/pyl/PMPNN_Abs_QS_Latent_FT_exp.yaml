@@ -1,0 +1,11 @@
+defaults:
+ - PMPNN_Abs_S_Latent_FT_exp
+
+
+experiment:
+  name: PMPNN_Abs_QS_Latent_OT_10_FT
+
+lm:
+  save_name: ${experiment.name}
+  model:
+    name: PMPNN_Quantized_Struct_Latent_Diff

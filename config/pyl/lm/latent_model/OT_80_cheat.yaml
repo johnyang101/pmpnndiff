@@ -1,0 +1,4 @@
+vqvae_name: PMPNN_OTVQ_CPD_LM
+lm_path: /Mounts/rbg-storage1/users/johnyang/branch2/s2sDM/pkl_jar/ckpt/FT_PMPNN_OTVQ_hp_search_7/epoch=46-step=18643.ckpt
+codebook_size: 80
+hparams_file: /Mounts/rbg-storage1/users/johnyang/branch2/s2sDM/multirun/2023-01-15/20-11-33/7/.hydra/config.yaml

@@ -1,0 +1,43 @@
+defaults:
+  - dm: gvp
+  - lm: GVP_Paper_CPD
+  - lm/model: GVP_MODEL
+  - lm/token: Prot_Seq
+  - callbacks: base
+  - trainer: base
+  - override hydra/launcher: joblib
+
+debug: False
+debug_lnc: False
+optimized_metric: null
+
+experiment:
+  name: base gvp pyl
+  mode: train
+  num_loader_workers: 0
+  port: 12319
+  dist_mode: single
+  use_wandb: True
+  ckpt_path: null
+  wandb_logger:
+    project: vq
+    name: ${experiment.name}
+    dir: ./
+    log_model: all
+    tags: ['experimental', 'gvp']
+
+lm:
+  learning_rate: 0.0001
+  ignore_keys: []
+  pred_cfg:
+    num_pred_samples: 8
+    pred_batch_size: 1800
+    data_dir: /Mounts/rbg-storage1/users/johnyang/data/pmpnn/final_designability_esmf_outputs
+    tds_dir: ${lm.pred_cfg.data_dir}/test_designed_seqs/
+    save_name: ${experiment.name}
+    save_dir: ${lm.pred_cfg.data_dir}/${lm.pred_cfg.save_name}/
+  # tds_dir: /Mounts/rbg-storage1/users/johnyang/data/pmpnn/test_designed_seqs/
+  # output_dir: null
+  # save_name: ${experiment.name}
+  # sampling_temp: 0.1
+  # freeze_ae: True

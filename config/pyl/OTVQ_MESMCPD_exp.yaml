@@ -1,0 +1,16 @@
+defaults:
+  - PMPNN_ESM_exp
+  - lm/model/vq_cfg: ot
+  - override dm/esm_cfg: esm_cfg
+
+experiment:
+  name: OTVQ_MESMCPD_exp
+
+lm:
+  lm_name: PMPNN_OTVQ_MESMCPD_LM
+  model:
+    hidden_dim: 128
+    vq_cfg:
+      dim: ${lm.model.hidden_dim}
+      codebook_size: 80
+      codebook_dim: 8

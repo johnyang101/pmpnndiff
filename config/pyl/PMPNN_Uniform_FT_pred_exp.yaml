@@ -1,0 +1,11 @@
+defaults:
+ - PMPNN_Uniform_exp
+ - lm/model/PMPNN_FT_PATH
+
+experiment:
+  name: PMPNN_Uniform_FT_pred
+  mode: predict
+  ckpt_path: /Mounts/rbg-storage1/users/johnyang/s2sDM/pkl_jar/ckpt/PMPNN_Uniform_FT/epoch=849-step=79050.ckpt
+
+lm:
+  ignore_keys: ['W_out.weight', 'W_out.bias']

@@ -1,0 +1,10 @@
+codebook_dim: 16
+codebook_size: 20
+decay: 0.8
+commitment_weight: 1.
+orthogonal_reg_weight: 10
+use_cosine_sim: True
+kmeans_init: True
+sample_codebook_temp: 0.25
+esm_reg_weight: 0.
+learnable_codebook: True

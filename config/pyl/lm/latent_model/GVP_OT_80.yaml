@@ -1,0 +1,4 @@
+vqvae_name: PMPNN_OTVQ_CPD_LM
+lm_path: /Mounts/rbg-storage1/users/johnyang/s2sDM/pkl_jar/ckpt/GVP_OTVQ_exp/epoch=3514-step=664335.ckpt
+codebook_size: 80
+hparams_file: /Mounts/rbg-storage1/users/johnyang/s2sDM/outputs/2023-01-22/21-23-35/.hydra/config.yaml

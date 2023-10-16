@@ -1,0 +1,10 @@
+defaults:
+ - PMPNN_Abs_S_Latent_FT_exp
+
+experiment:
+  name: PMPNN_Abs_S_Latent_FT_pred
+  mode: predict
+  ckpt_path: /Mounts/rbg-storage1/users/johnyang/s2sDM/pkl_jar/ckpt/PMPNN_Abs_S_Latent_OT_10_FT/epoch=604-step=38115.ckpt
+
+lm:
+  save_name: ${experiment.name}

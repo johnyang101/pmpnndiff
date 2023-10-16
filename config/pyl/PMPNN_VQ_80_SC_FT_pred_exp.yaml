@@ -1,0 +1,14 @@
+defaults:
+  - PMPNN_VQ_80_SC_FT_exp
+
+experiment:
+  name: PMPNN_VQ_80_SC_FT_pred_exp
+  mode: predict
+  ckpt_path: /Mounts/rbg-storage1/users/johnyang/s2sDM/pkl_jar/ckpt/PMPNN_VQ_SC_FT/epoch=514-step=71070.ckpt
+  
+
+lm:
+  save_name: ${experiment.name}
+  pred_cfg:
+    save_name: ${experiment.name}
+    save_dir: ${lm.pred_cfg.data_dir}/${lm.pred_cfg.save_name}/

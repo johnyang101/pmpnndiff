@@ -1,0 +1,25 @@
+defaults:
+  - GVP_UNL_exp
+  - lm/latent_model: GVP_OT_80
+  - override lm/token: VQ_Latent
+
+experiment:
+  name: GVP_UNL_Latent_exp
+
+lm:
+  lm_name: Latent_UNLAbs_Diff_LM
+  model_type: GVP
+  num_classes: 81
+  mask_id: 80
+  save_name: ${experiment.name}
+  freeze_ae: True
+  model:
+    name: GVP_Paper_Diff
+    absorbing: True
+    num_classes: ${lm.num_classes}
+    embedding_cfg:
+      max_len: ${dm.batch_tokens} #TODO: Change to batch_size
+      T: ${lm.num_timesteps}
+      input_size: ${lm.num_classes} # relevant for codebook size.
+      pos_embed_size: 16
+      output_embed_size: ${lm.num_classes}

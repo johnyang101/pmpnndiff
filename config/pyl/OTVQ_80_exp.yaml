@@ -1,0 +1,16 @@
+defaults:
+  - base_exp
+  - lm/model/vq_cfg: ot
+
+experiment:
+  name: OTVQ
+  ckpt_path: /Mounts/rbg-storage1/users/johnyang/branch2/s2sDM/pkl_jar/ckpt/FT_PMPNN_OTVQ_hp_search_7/epoch=46-step=18643.ckpt
+
+lm:
+  lm_name: PMPNN_OTVQ_CPD_LM
+  model:
+    hidden_dim: 128
+    vq_cfg:
+      dim: ${lm.model.hidden_dim}
+      codebook_size: 80
+      codebook_dim: 8

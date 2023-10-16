@@ -1,0 +1,28 @@
+defaults:
+  - GVP_VG_exp
+  - override lm: UNL_Absorbing_D
+
+experiment:
+  name: GVP_UNL_exp
+
+lm:
+  lm_name: UNL_Absorbing_Diff_LM
+  model_type: GVP
+  num_classes: 21
+  save_name: ${experiment.name}
+  model:
+    name: GVP_Paper_Diff
+    absorbing: True
+    num_classes: ${lm.num_classes}
+    embedding_cfg:
+      max_len: ${dm.batch_tokens} #TODO: Change to batch_size
+      T: ${lm.num_timesteps}
+      input_size: ${lm.num_classes} # relevant for codebook size.
+      pos_embed_size: 64
+      output_embed_size: ${lm.num_classes}
+
+dm:
+  alphabet: ACDEFGHIKLMNPQRSTVWY
+
+callbacks:
+  es_cb_enabled: False

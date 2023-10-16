@@ -1,0 +1,13 @@
+num_letters: 21
+node_features: 128
+edge_features: 128
+hidden_dim: 128
+num_encoder_layers: 3
+num_decoder_layers: 3
+vocab: 21
+k_neighbors: 48
+augment_eps: 0.02
+dropout: 0.1
+ft: False
+ft_path: null
+disable_random_decoding_order: False

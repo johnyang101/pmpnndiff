@@ -1,0 +1,16 @@
+defaults:
+ - PMPNN_Abs_exp
+ - lm/model/PMPNN_FT_PATH
+ - override dm: pmpnn_mc
+
+experiment:
+  name: PMPNN_Abs_FT_MC
+
+trainer:
+  num_sanity_val_steps: 0
+
+dm:
+  alphabet: ACDEFGHIKLMNPQRSTVWY
+
+lm:
+  ignore_keys: ['W_out.weight', 'W_out.bias']

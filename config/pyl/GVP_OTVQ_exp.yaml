@@ -1,0 +1,16 @@
+defaults: 
+ - base_gvp_exp
+ - lm/model/vq_cfg: ot
+
+experiment:
+  name: GVP_OTVQ_exp
+
+lm:
+  lm_name: GVP_OTVQ_CPD_LM
+  model:
+    vector_gate: True
+    vq_cfg:
+      dim: 100
+
+
+  

@@ -1,0 +1,12 @@
+lm_name: MSFT_Absorbing_Diff_LM
+model_type: PMPNN
+loss_type: vb_stochastic
+parametrization: x0
+num_classes: 20
+prior_rule: 0 #2 is purity sampling
+shape: null #TODO: desired sampling length
+num_timesteps: 1000
+auxiliary_loss_weight: 0.0
+adaptive_auxiliary_loss: False
+mask_weight: [1,1]
+learnable_cf: False
