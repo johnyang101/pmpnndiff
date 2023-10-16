@@ -7,7 +7,7 @@ from typing import Dict, List, Optional, Tuple, Union
 from torchtyping import TensorType, patch_typeguard
 from omegaconf import DictConfig
 
-import pmpnn_utils as pu
+import models.pmpnn_utils as pu
 import models.embed
 
 '''
@@ -199,12 +199,10 @@ class PMPNN_Baseline_Diff(PMPNN_Baseline_CPD):
     def __init__(self, num_letters=21, node_features=128, edge_features=128,
         hidden_dim=128, num_encoder_layers=3, num_decoder_layers=3,
         vocab=21, k_neighbors=32, augment_eps=0.1, dropout=0.1,
-        num_classes: int = 20,
         embedding_cfg: Union[Dict, DictConfig] = {}, absorbing=False,
         **kwargs):
         
         assert embedding_cfg, 'Must pass in embedding conf'
-        # edge_features = edge_features + embedding_cfg['output_embed_size']
         
         super().__init__(
             num_letters, 
@@ -219,13 +217,11 @@ class PMPNN_Baseline_Diff(PMPNN_Baseline_CPD):
             dropout
         )
         self.W_s = models.embed.TimestepEmbedding(**embedding_cfg) 
-        self.num_classes = num_classes 
+        self.num_classes = num_letters 
         self.max_len = embedding_cfg['max_len']
         
         if absorbing:
             self.W_out = nn.Linear(hidden_dim, self.num_classes - 1, bias=True)
-
-        assert self.num_classes == num_letters, 'PMPNN Denoise Fn must have same number of classes as num_letters'
         
     def decode(self, mask, chain_M, h_V, h_E, E_idx, h_S):
         """

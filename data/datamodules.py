@@ -34,7 +34,7 @@ class PMPNN_JSONL_DM(Generic_PMPNN_DM):
         
     def setup(self, stage=None):
         if stage == "fit" or stage is None: #TODO: Standardize self.cfg.train_jsonl_path, self.cfg.valid_jsonl_path, self.cfg.test_jsonl_path
-            self.dataset_train = StructureDatasetJSONL(self.cfg.train_jsonl_path, truncate=self.truncate, max_length=self.cfg.max_protein_length, alphabet=self.cfg.alphabet, esm=self.cfg.esm, esm_cfg=self.cfg.esm_cfg)
+            self.dataset_train = StructureDatasetJSONL(self.cfg.train_jsonl_path, truncate=self.truncate, max_length=self.cfg.max_protein_length, alphabet=self.cfg.alphabet)
             self.dataset_val = self.dataset_train if self.memorize else StructureDatasetJSONL(self.cfg.valid_jsonl_path, truncate=self.truncate, max_length=self.cfg.max_protein_length, alphabet=self.cfg.alphabet)
         if stage == 'test' or stage == 'predict' or stage is None:
             self.dataset_test = StructureDatasetJSONL(self.cfg.test_jsonl_path, truncate=self.truncate, max_length=self.cfg.max_protein_length, alphabet=self.cfg.alphabet)    

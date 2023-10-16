@@ -1,0 +1,17 @@
+defaults:
+  - train_diff
+
+sampling_type: purity_sample  # Replace null with the default value or actual value
+sampling_kwargs:
+  stride: 1
+  max_sample_ratio_per_step: 0.05
+  prior_weight: 2.0
+
+experiment:
+  ckpt_path: /Mounts/rbg-storage1/users/johnyang/pmpnndiff/weights/pmpnn_diff.ckpt
+  name: purity_sample_prior_2.0
+
+
+lm:
+  model:
+    augment_eps: 0.0

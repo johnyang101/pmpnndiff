@@ -1,5 +1,8 @@
 import numpy as np
 import torch
+import pytorch_lightning as pl
+from pytorch_lightning.callbacks import EarlyStopping, ModelCheckpoint
+from pytorch_lightning.loggers import WandbLogger
 
 import os, GPUtil
 from typing import Dict, List, Tuple, Union
@@ -9,13 +12,10 @@ from hydra.core.hydra_config import HydraConfig
 from omegaconf import DictConfig, OmegaConf
 
 import data.datamodules as dm
+from models.pmpnn_lms import PMPNN_Baseline_CPD_LM
+from models.diffusion_lms import UNL_Absorbing_Diff_LM
+
 import experiments.utils as eu
-from models.pmpnn_models import *
-from models.pmpnn_lms import *
-from models.diffusion_lms import *
-from pytorch_lightning.callbacks import EarlyStopping, ModelCheckpoint
-from pytorch_lightning.loggers import WandbLogger
-from pytorch_lightning.tuner.tuning import Tuner
 
 class Experiment:
     def __init__(self,
@@ -39,15 +39,11 @@ class Experiment:
         if HydraConfig.initialized() and 'num' in HydraConfig.get().job:
             self._exp_conf.name = (
                 f'{self._exp_conf.name}_{HydraConfig.get().job.num}')
-            # self._dm_conf.num_workers = 0 
         
         self.debug = self._conf.debug
-        # self.debug_dm = self._conf.debug_dm
         if self.debug:
+            os.environ["WANDB_MODE"] = "dryrun"
             self._exp_conf.name = f'{self._exp_conf.name}_debug'
-            if self._exp_conf.mode == 'predict':
-                self._exp_conf.ckpt_path = None
-            # self._dm_conf.num_workers = 0
             if self._conf.debug_lnc: #Logging and Checkpointing
                 self._trainer_conf.check_val_every_n_epoch = 1
                 self._trainer_conf.log_every_n_steps = 1
@@ -150,6 +146,7 @@ class Experiment:
     
     def init_wandb(self):
         if self._use_wandb:
+            
             self._log.info('Initializing Wandb.')
             conf_dict = OmegaConf.to_container(self._conf, resolve=True)
             cfd = dict(eu.flatten_dict(conf_dict))
@@ -191,7 +188,7 @@ class Experiment:
         return metrics_dict
 
         
-@hydra.main(version_base=None, config_path="./config/pyl", config_name="base")
+@hydra.main(version_base=None, config_path="../config/clean", config_name="base")
 def run(conf: DictConfig) -> Union[None, float]:
 
     # multinode requires this set in submit script

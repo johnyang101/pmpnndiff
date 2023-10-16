@@ -1,5 +1,5 @@
 import torch, torch.nn as nn
-import utils.diffusion_utils as diff_u
+import models.diffusion_utils as diff_u
 
 class TimestepEmbedding(nn.Module): #TODO: Move this to a new file.
     

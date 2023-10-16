@@ -1,0 +1,32 @@
+defaults:
+ - base
+
+lm: 
+  lm_name: UNL_Absorbing_Diff_LM
+  num_classes: 21
+  num_timesteps: 100
+  loss_type: reweighted_elbo
+  mask_schedule: random
+  model:
+    num_letters: ${lm.num_classes}
+    node_features: 128
+    edge_features: 128
+    hidden_dim: 128
+    num_encoder_layers: 3
+    num_decoder_layers: 3
+    vocab: ${lm.num_classes}
+    k_neighbors: 48
+    augment_eps: 0.02
+    dropout: 0.1
+    ft: True
+    ft_path: /Mounts/rbg-storage1/users/johnyang/pmpnndiff/weights/pmpnn_arm.pt
+    disable_random_decoding_order: False
+    absorbing: True
+    ignore_keys: ['W_out.weight', 'W_out.bias']
+    embedding_cfg:
+      max_len: ${dm.max_protein_length}
+      T: ${lm.num_timesteps}
+      input_size: ${lm.num_classes} # relevant for codebook size.
+      pos_embed_size: 64
+      output_embed_size: ${lm.model.hidden_dim}
+  

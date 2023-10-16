@@ -117,3 +117,9 @@ def get_params_string(sampling_type, stride, max_sample_ratio_per_step, prior_we
     else:
         params = f"sampling_type={sampling_type}"
     return params
+
+def initialize_device_and_model(lm):
+    replica_id = int(get_free_gpu())
+    device = f'cuda:{replica_id}'
+    lm.to(device)
+    return device, replica_id

@@ -4,8 +4,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 import pytorch_lightning as pl
 
-import pmpnn_utils as pu
-import pmpnn_models
+import models.pmpnn_utils as pu
+import models.pmpnn
 from models.utils import load_sd_for_matched_keys
 
 class Generic_LM(pl.LightningModule):
@@ -73,7 +73,7 @@ class Generic_PMPNN_LM(Generic_LM):
 class PMPNN_Baseline_CPD_LM(Generic_PMPNN_LM):
     def __init__(self, cfg):
         super().__init__(cfg)
-        self.model = pmpnn_models.PMPNN_Baseline_CPD(**self.cfg.model)
+        self.model = models.pmpnn.PMPNN_Baseline_CPD(**self.cfg.model)
         if self.cfg.model.ft:
             self.model = self.load_ft_dict(self.model)
         self.sampling_temp = self.cfg.sampling_temp if hasattr(self.cfg, 'sampling_temp') else 0.1 #TODO: remove this hacky fix, backwards compat for old configs.

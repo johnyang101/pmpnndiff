@@ -1,0 +1,60 @@
+debug: False
+debug_lnc: False
+
+lm:
+  learning_rate: 0.0001
+
+dm:
+  name: PMPNN_JSONL_DM
+  home_path: /Mounts/rbg-storage1/users/johnyang
+  train_jsonl_path: ${dm.home_path}/data/pmpnn/single_chains/train_cath_chains.jsonl
+  valid_jsonl_path: ${dm.home_path}/data/pmpnn/single_chains/val_cath_chains.jsonl
+  test_jsonl_path: ${dm.home_path}/data/pmpnn/single_chains/test_cath_chains.jsonl
+  max_protein_length: 10000
+  batch_size: 20000 #Can be 25000 on rbgquanta2
+  alphabet: ACDEFGHIKLMNPQRSTVWYX-
+  truncate: null
+
+callbacks:
+  es_cb_enabled: False
+  ckpt_cb_enabled: True
+  es_cb:
+  ckpt_cb:
+    dirpath: ./pkl_jar/ckpt/${experiment.name}
+    filename: null #'{epoch}-{val_ppl}-{step}'
+    every_n_epochs: ${trainer.check_val_every_n_epoch}
+    save_on_train_epoch_end: True
+
+experiment:
+  name: base pyl
+  mode: train
+  num_loader_workers: 0
+  port: 12319
+  dist_mode: single
+  use_wandb: True
+  ckpt_path: null
+  wandb_logger:
+    project: vq
+    name: ${experiment.name}
+    dir: ./
+    log_model: all
+    tags: ['experimental']
+
+trainer:
+  accelerator: 'gpu'
+  auto_scale_batch_size: False
+  auto_lr_find: False
+  check_val_every_n_epoch: 5
+  log_every_n_steps: 100
+  num_sanity_val_steps: 1
+  enable_progress_bar: True
+  enable_checkpointing: True
+  fast_dev_run: False
+  profiler: simple
+  max_epochs: 10000
+  strategy: null
+  enable_model_summary: True
+  overfit_batches: 0.0
+  limit_train_batches: 1.0
+  limit_val_batches: 1.0
+  limit_predict_batches: 1.0

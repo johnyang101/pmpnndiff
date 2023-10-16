@@ -1,0 +1,46 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "train diff",
+            "type": "python",
+            "request": "launch",
+            "program": "/Mounts/rbg-storage1/users/johnyang/pmpnndiff/experiments/inference_pmpnn_diff.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "-cn",
+                "inference_diff"
+            ]
+        },
+        {
+            "name": "train diff",
+            "type": "python",
+            "request": "launch",
+            "program": "/Mounts/rbg-storage1/users/johnyang/pmpnndiff/experiments/train.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "debug=True",
+                "-cn",
+                "train_diff"
+            ]
+        },
+        {
+            "name": "train arm",
+            "type": "python",
+            "request": "launch",
+            "program": "/Mounts/rbg-storage1/users/johnyang/pmpnndiff/experiments/train.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "args": [
+                "debug=True",
+                "-cn",
+                "train_arm"
+            ]
+        }
+    ]
+}
