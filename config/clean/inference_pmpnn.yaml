@@ -1,0 +1,14 @@
+defaults:
+  - train_arm
+
+sampling_type: pmpnn
+sampling_kwargs:
+  temperature: 0.1
+
+experiment:
+  ckpt_path: /Mounts/rbg-storage1/users/johnyang/pmpnndiff/weights/pmpnn_arm.pt
+  name: pmpnn_arm
+
+lm:
+  model:
+    augment_eps: 0.0

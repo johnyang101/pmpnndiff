@@ -5,6 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "infer pmpnn",
+            "type": "python",
+            "request": "launch",
+            "program": "/Mounts/rbg-storage1/users/johnyang/pmpnndiff/experiments/inference.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "-cn",
+                "inference_pmpnn"
+            ]
+        },
+        {
             "name": "train diff",
             "type": "python",
             "request": "launch",

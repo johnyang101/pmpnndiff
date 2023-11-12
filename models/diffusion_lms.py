@@ -194,7 +194,7 @@ class UNL_Absorbing_Diff_LM(Generic_Diff_LM):
             unmasked = self._update_mask_and_sample(changes, unmasked, x_0_hat, obj)
 
         assert (torch.where(obj.x_t == self.mask_id, torch.ones_like(obj.x_t), torch.zeros_like(obj.x_t)) * obj.mask).sum() == 0, 'Mask ID still in x_t'
-        accuracy = torch.sum(torch.eq(obj.x_t[obj.mask.bool()], obj.x_start[obj.mask.bool()])) / obj.mask.sum()
+        accuracy = obj.calculate_accuracy()
         return obj, accuracy
     
     def purity_sample(self, obj, stride=1, max_sample_ratio_per_step=0.05, prior_weight=0.5):
@@ -241,7 +241,7 @@ class UNL_Absorbing_Diff_LM(Generic_Diff_LM):
             obj.x_t = updated_x_t
 
         assert (torch.where(obj.x_t == self.mask_id, torch.ones_like(obj.x_t), torch.zeros_like(obj.x_t)) * obj.mask).sum() == 0, 'Mask ID still in x_t'
-        accuracy = torch.sum(torch.eq(obj.x_t[obj.mask.bool()], obj.x_start[obj.mask.bool()])) / obj.mask.sum()
+        accuracy = obj.calculate_accuracy()
         return obj, accuracy
 
 
