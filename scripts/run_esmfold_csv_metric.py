@@ -3,6 +3,7 @@
 python scripts/run_esmfold.py --fasta_path /data/rsg/chemistry/jyim/projects/protein_diffusion/notebooks/unconditional_sequences.fa --output_dir /data/scratch/jyim/esmfold_outputs
 """
 
+import numpy as np
 import argparse
 import torch
 import esm
@@ -13,8 +14,10 @@ import csv
 from tqdm import tqdm
 from Bio import PDB
 from Bio.PDB.Chain import Chain
-from  import *
-from scripts import utils as su
+import dataclasses
+from se3_diffusion import data
+import se3_diffusion.data.utils as sdu
+import se3_diffusion.analysis.metrics as metrics
 import typing as T
 import uuid
 import pandas as pd
@@ -55,12 +58,12 @@ def parse_pdb_feats(
     # print(struct_chains)
 
     def _process_chain_id(x):
-        chain_prot = process_chain(struct_chains[x], x)
+        chain_prot = sdu.process_chain(struct_chains[x], x)
         chain_dict = dataclasses.asdict(chain_prot)
 
         # Process features
-        feat_dict = {x: chain_dict[x] for x in CHAIN_FEATS}
-        return parse_chain_feats(
+        feat_dict = {x: chain_dict[x] for x in sdu.CHAIN_FEATS}
+        return sdu.parse_chain_feats(
             feat_dict, scale_factor=scale_factor)
 
     if isinstance(chain_id, str):
@@ -112,7 +115,7 @@ def calc_tm_score(pos_1, pos_2, seq_1, seq_2):
     return tm_results.tm_norm_chain1, tm_results.tm_norm_chain2 
         
 def calc_aligned_rmsd(pos_1, pos_2):
-    aligned_pos_1 = su.rigid_transform_3D(pos_1, pos_2)[0]
+    aligned_pos_1 = sdu.rigid_transform_3D(pos_1, pos_2)[0]
     return np.mean(np.linalg.norm(aligned_pos_1 - pos_2, axis=-1))        
 
 def designability_metric(reference_feats: T.Dict, esmf_feats: T.Dict, header: str) -> T.Dict:
@@ -125,7 +128,7 @@ def designability_metric(reference_feats: T.Dict, esmf_feats: T.Dict, header: st
     
     pdb, chain_id = header.split('.'), header.split('.')
     
-    sample_seq = pdu.aatype_to_seq(reference_feats['aatype'])
+    sample_seq = sdu.aatype_to_seq(reference_feats['aatype'])
     
     reference_feats, esmf_feats, length = truncate_bb_positions(reference_feats, esmf_feats)
     

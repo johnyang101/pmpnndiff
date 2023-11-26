@@ -5,6 +5,27 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "run_esmfold_csv_metric",
+            "type": "python",
+            "request": "launch",
+            "program": "/Mounts/rbg-storage1/users/johnyang/pmpnndiff/scripts/run_esmfold_csv_metric.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--csv_path",
+                "/Mounts/rbg-storage1/users/johnyang/pmpnndiff/outputs/2023-11-12/16-23-32/sampling_results/sampling_20231112_181931_pmpnn_arm_sampling_type=pmpnn_params={'temperature': 0.1}.csv",
+                "--output_dir",
+                "./outputs/2023-11-12/16-23-32/esmf_pdbs",
+                "--device",
+                "--name",
+                "pmpnn_arm",
+                "--test_pdbs_dir",
+                "/Mounts/rbg-storage1/users/johnyang/data/pmpnn/test_pdbs",
+                "--esm_dir",
+                "/data/rsg/chemistry/jyim/.cache/torch"
+            ]
+        },
+        {
             "name": "infer pmpnn",
             "type": "python",
             "request": "launch",
