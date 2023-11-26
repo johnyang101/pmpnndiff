@@ -17,6 +17,7 @@
                 "--output_dir",
                 "./outputs/2023-11-12/16-23-32/esmf_pdbs",
                 "--device",
+                "7",
                 "--name",
                 "pmpnn_arm",
                 "--test_pdbs_dir",

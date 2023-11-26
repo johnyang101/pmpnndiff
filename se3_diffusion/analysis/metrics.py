@@ -4,7 +4,7 @@ import numpy as np
 from analysis import utils as au
 from data import utils as du
 from openfold.np import residue_constants
-from openfold.np.relax import amber_minimize
+# from openfold.np.relax import amber_minimize
 import tree
 from tmtools import tm_align
 
