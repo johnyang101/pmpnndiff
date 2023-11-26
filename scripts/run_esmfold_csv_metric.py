@@ -13,11 +13,13 @@ import csv
 from tqdm import tqdm
 from Bio import PDB
 from Bio.PDB.Chain import Chain
-from prot_diff.data.utils import *
-import utils.analysis_utils as au
+from  import *
+from scripts import utils as su
 import typing as T
 import uuid
 import pandas as pd
+from torchtyping import TensorType
+from tmtools import tm_align
 
 # Define the parser
 parser = argparse.ArgumentParser(description='CSV processing script.')
@@ -98,6 +100,49 @@ def generate_unique_output_path(base_dir, prefix='', extension='.csv'):
         # Check if a file with this name already exists
         if not os.path.exists(output_path):
             return output_path
+        
+def truncate_bb_positions(reference_feats, esmf_feats):
+    length = min(reference_feats['bb_positions'].shape[0], esmf_feats['bb_positions'].shape[0])
+    reference_feats['bb_positions']: TensorType['N', 3] = reference_feats['bb_positions'][:length, :]
+    esmf_feats['bb_positions']: TensorType['N', 3] = esmf_feats['bb_positions'][:length, :]
+    return reference_feats, esmf_feats, length
+        
+def calc_tm_score(pos_1, pos_2, seq_1, seq_2):
+    tm_results = tm_align(pos_1, pos_2, seq_1, seq_2)
+    return tm_results.tm_norm_chain1, tm_results.tm_norm_chain2 
+        
+def calc_aligned_rmsd(pos_1, pos_2):
+    aligned_pos_1 = su.rigid_transform_3D(pos_1, pos_2)[0]
+    return np.mean(np.linalg.norm(aligned_pos_1 - pos_2, axis=-1))        
+
+def designability_metric(reference_feats: T.Dict, esmf_feats: T.Dict, header: str) -> T.Dict:
+    
+    designed_results = {
+        'tm_score': [],
+        'header': [],
+        'rmsd': [],
+    }
+    
+    pdb, chain_id = header.split('.'), header.split('.')
+    
+    sample_seq = pdu.aatype_to_seq(reference_feats['aatype'])
+    
+    reference_feats, esmf_feats, length = truncate_bb_positions(reference_feats, esmf_feats)
+    
+    sample_seq: str = sample_seq[:length]
+    
+    # Calculate scTM of ESMFold outputs with reference protein
+    _, tm_score = metrics.calc_tm_score(
+        reference_feats['bb_positions'], esmf_feats['bb_positions'],
+        sample_seq, sample_seq)
+    rmsd = metrics.calc_aligned_rmsd(
+        reference_feats['bb_positions'], esmf_feats['bb_positions'])
+        
+    designed_results['tm_score'].append(tm_score)
+    designed_results['header'].append(header)
+    designed_results['rmsd'].append(rmsd)
+    
+    return designed_results
 
 def main(args):
     torch.hub.set_dir(args.esm_dir)
@@ -145,7 +190,7 @@ def main(args):
             pdb, chid = header.split(".")
             ref_feats = get_reference_feats(os.path.join(args.test_pdbs_dir, pdb + '.pdb'), chain_id=chid)
 
-            d_dict = au.designability_metric(ref_feats, feats, header)
+            d_dict = designability_metric(ref_feats, feats, header)
             data.append({'pdb': header, 'id': row_id, 'tm_score': d_dict['tm_score'][0], 'rmsd': d_dict['rmsd'][0]})
 
     # Create DataFrame from the collected data
