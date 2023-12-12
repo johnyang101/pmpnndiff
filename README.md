@@ -3,6 +3,11 @@
 
 This repository offers an implementation of discrete diffusion for inverse protein folding. It has pre-trained models, training routines, and inference scripts, ensuring a streamlined experience for protein folding predictions and experiments.
 
+## To-do List:
+
+- Provide code of designability metric for proper reproducibility.
+- Configure PMPNN ARM sampling temperature correctly.
+
 ## 1. Installation
 
 ### Create and Activate Conda Environment
