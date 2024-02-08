@@ -1,7 +1,7 @@
 # pmpnndiff
-## Fast Non-autoregressive Inverse Folding with Discrete Diffusion
+[Fast Non-autoregressive Inverse Folding with Discrete Diffusion (NeurIPS MLSB 2023)](https://arxiv.org/abs/2312.02447)
 
-This repository offers an implementation of discrete diffusion for inverse protein folding. It has pre-trained models, training routines, and inference scripts, ensuring a streamlined experience for protein folding predictions and experiments.
+This repository offers an implementation of discrete diffusion for inverse protein folding.  It has pre-trained models, training routines, and inference scripts, ensuring a streamlined experience for protein folding predictions and experiments.
 
 ## To-do List:
 
